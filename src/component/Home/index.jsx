@@ -9,10 +9,9 @@ const Home = ()=>{
     const dispatch = useDispatch()
 
     return <>
-        <div className="Home " style={{background:`url('${bg_header}') no-repeat fixed center`}}>
-            <div className="container min-h-screen">
+        <div className="Home " style={{background:`url('${bg_header}') no-repeat fixed` , backgroundSize:"101% 101%"}}>
+            <div className="container min-h-screen   ">
                 <NavbarHome/>
-                {/* home {value} */}
             </div>
         </div>
     </>
