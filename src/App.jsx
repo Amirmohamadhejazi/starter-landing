@@ -4,19 +4,17 @@ import { Routes, Route, Outlet, Link } from "react-router-dom";
 function App() {
 
   return (
-      <>
-          <div className="container min-h-screen">
-              <Routes>
-                  <Route>
-                      <Route index element={<Home/>} />
-                      <Route path="/" element={<Home />} />
-                      <Route path="signup" element={<Signup />} />
-                      <Route path="dashboard" element={<Dashboard />} />
-                      <Route path="*" element={<Error />} />
-                  </Route>
-              </Routes>
-          </div>
-      </>
+    <>
+        <Routes>
+           <Route>
+                <Route index element={<Home/>} />
+                <Route path="/" element={<Home />} />
+                <Route path="signup" element={<Signup />} />
+                <Route path="dashboard" element={<Dashboard />} />
+                <Route path="*" element={<Error />} />
+            </Route>
+        </Routes>
+    </>
   )
 }
 
