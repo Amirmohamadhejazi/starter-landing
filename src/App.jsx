@@ -5,15 +5,18 @@ function App() {
 
   return (
     <>
-        <Routes>
-           <Route>
-                <Route index element={<Home/>} />
-                <Route path="/" element={<Home />} />
-                <Route path="signup" element={<Signup />} />
-                <Route path="dashboard" element={<Dashboard />} />
-                <Route path="*" element={<Error />} />
-            </Route>
-        </Routes>
+        <div className="font-Semi-Regular">
+            <Routes>
+                <Route>
+                    <Route index element={<Home/>} />
+                    <Route path="/" element={<Home />} />
+                    <Route path="signup" element={<Signup />} />
+                    <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="*" element={<Error />} />
+                </Route>
+            </Routes>
+        </div>
+
     </>
   )
 }

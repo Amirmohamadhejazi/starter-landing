@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Font_Light';
+    src: url('src/assets/font/WorkSans-Light.ttf')
+}
+
+@font-face {
+    font-family: 'Font_Regular';
+    src: url('src/assets/font/WorkSans-Regular.ttf')
+}
+@font-face {
+    font-family: 'Font_Bold';
+    src: url('src/assets/font/WorkSans-Bold.ttf')
+}
+@font-face {
+    font-family: 'Font_SemiBold';
+    src: url('src/assets/font/WorkSans-SemiBold.ttf')
+}
+@font-face {
+    font-family: 'Font_Thin';
+    src: url('src/assets/font/WorkSans-Thin.ttf')
+}
