@@ -5,16 +5,13 @@ import {Website_Mockup} from "src/assets/index.jsx";
 
 const Header = () => {
   return <>
-
       <NavbarHome/>
-
-      <div className="py-[10rem]">
-          <div className="flex flex-row">
-              <div className="basis-1/3">
+      <div className="py-16 lg:py-[10rem]">
+          <div className="flex px-2 lg-px-0 flex-col-reverse lg:flex-row">
+              <div className="mt-6 lg:mt-0 lg:basis-1/3">
                   <div>
-                      <h1 className="text-5xl font-Semi-Bold tracking-wide">One page websites to all your social
-                          profiles.</h1>
-                      <span className="block tracking-tighter font-Regular mt-10 tracking-widest">with linkProfile, you can create a one page website that links to all your social media profiles in less than 5 minutes of setup.</span>
+                      <h1 className="text-4xl lg:text-5xl font-Semi-Bold tracking-wide">One page websites to all your social profiles.</h1>
+                      <span className="block  tracking-tighter font-Regular mt-10 tracking-widest">with linkProfile, you can create a one page website that links to all your social media profiles in less than 5 minutes of setup.</span>
                       <div className="btn_header flex inline-flex gap-4 items-center mt-10">
                           <span>Get Started for free</span>
                           <IoIosArrowForward className="pl-2 text-2xl"/>
@@ -27,11 +24,10 @@ const Header = () => {
                       </div>
                   </div>
               </div>
-              <div className="basis-2/3 flex justify-end">
-                  <div className="w-[80%]">
+              <div className="lg:basis-2/3 flex justify-end">
+                  <div className="lg:w-[70%]">
                       <img src={Website_Mockup}  alt=""/>
                   </div>
-
               </div>
           </div>
       </div>

@@ -9,6 +9,15 @@ import heart from "src/assets/static/Heart.svg"
 import Avatar1 from "src/assets/static/User Avatar 1.png"
 import Avatar2 from "src/assets/static/User Avatar 2.png"
 import Avatar3 from "src/assets/static/User Avatar 3.png"
-import Dashboard_desktop from "src/assets/static/Dashboard-Desktop2.png"
+import Dashboard_desktop from "src/assets/static/Dashboard-Desktop.png"
+import Dashboard_mobile from "src/assets/static/Dashboard-Mobile.png"
+import Dashboard_tablet from "src/assets/static/Dashboard-Tablet.png"
+import Pattern from "src/assets/static/Pattern.png"
+import Checkmark from "src/assets/static/Checkmark.svg"
+import CheckmarkGray from "src/assets/static/Checkmark gray.svg"
+import NotAvailable from "src/assets/static/Not Available.svg"
+import NotAvailableGray from "src/assets/static/Not Available gray.svg"
+import minus from "src/assets/static/Minus.svg"
+import plus from "src/assets/static/Plus.svg"
 
-export {Error404_img, logoDark, logoLight, bg_header, imgBerger_menu, Website_Mockup, Feature, heart, Avatar1, Avatar2, Avatar3, Dashboard_desktop}
+export {Error404_img, logoDark, logoLight, bg_header, imgBerger_menu, Website_Mockup, Feature, heart, Avatar1, Avatar2, Avatar3, Dashboard_desktop , Dashboard_mobile, Dashboard_tablet, Pattern, Checkmark, CheckmarkGray, NotAvailable, NotAvailableGray, plus, minus}

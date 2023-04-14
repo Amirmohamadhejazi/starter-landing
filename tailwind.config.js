@@ -1,5 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+
+  daisyui: {
+    themes: false,
+  },
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -12,9 +16,6 @@ export default {
       'Regular': ['Font_Regular'],
       'Bold': ['Font_Bold'],
       'SemiBold': ['Font_SemiBold'],
-    },
-    borderRadius: {
-      '6top': '6px 6px 0 0 '
     },
     container: {
       center: true,

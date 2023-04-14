@@ -1,4 +1,11 @@
-.Home{ 
+.Home{
+
+    .dashboard_preview{
+        background: url("src/assets/static/Dashboard-Desktop.png")   no-repeat center bottom ;
+        background-size: contain;
+        min-height: 45rem;
+        width: 100%;
+    }
     .btn_header{
         padding: 10px;
         border-radius: 25px;
@@ -10,5 +17,24 @@
 
     .dropdown .dropdown-content{
         right: 0;
+    }
+
+    @media only screen and (max-width: 500px) {
+        .dashboard_preview{
+            background: url("src/assets/static/Dashboard-Mobile.png") no-repeat center bottom !important;
+        }
+    }
+    @media only screen and (max-width: 1023px) {
+        .dashboard_preview{
+            min-height:30rem!important;
+            width: 100%;
+            background: url("src/assets/static/Dashboard-Tablet.png") no-repeat center bottom;
+            background-size: contain;
+        }
+    }
+    @media only screen and (max-width: 1280px) {
+        .dashboard_preview{
+            min-height: 40rem;
+        }
     }
 }

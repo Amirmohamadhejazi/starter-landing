@@ -2,7 +2,7 @@ import "./style.scss"
 
 const Signup = ()=>{
     return <>
-
+        Signup
     </>
 }
 
