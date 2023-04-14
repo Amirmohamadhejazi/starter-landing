@@ -19,5 +19,11 @@ import NotAvailable from "src/assets/static/Not Available.svg"
 import NotAvailableGray from "src/assets/static/Not Available gray.svg"
 import minus from "src/assets/static/Minus.svg"
 import plus from "src/assets/static/Plus.svg"
+import Dribble from "src/assets/static/Dribbble.svg"
+import Blogger from "src/assets/static/Blogger.svg"
+import Discord from "src/assets/static/Discord.svg"
+import Youtube from "src/assets/static/Youtube.svg"
+import LinkedIn from "src/assets/static/LinkedIn.svg"
+import Twitter from "src/assets/static/Twitter.svg"
 
-export {Error404_img, logoDark, logoLight, bg_header, imgBerger_menu, Website_Mockup, Feature, heart, Avatar1, Avatar2, Avatar3, Dashboard_desktop , Dashboard_mobile, Dashboard_tablet, Pattern, Checkmark, CheckmarkGray, NotAvailable, NotAvailableGray, plus, minus}
+export {Error404_img, logoDark, logoLight, bg_header, imgBerger_menu, Website_Mockup, Feature, heart, Avatar1, Avatar2, Avatar3, Dashboard_desktop , Dashboard_mobile, Dashboard_tablet, Pattern, Checkmark, CheckmarkGray, NotAvailable, NotAvailableGray, plus, minus, Dribble, Blogger, Discord, LinkedIn, Twitter , Youtube}
