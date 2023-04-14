@@ -9,10 +9,10 @@ function App() {
             <Routes>
                 <Route>
                     <Route index element={<Home/>} />
-                    <Route path="/" element={<Home />} />
-                    <Route path="signup" element={<Signup />} />
-                    <Route path="dashboard" element={<Dashboard />} />
-                    <Route path="*" element={<Error />} />
+                    <Route path="/starter-landing/" element={<Home />} />
+                    <Route path="/starter-landing/signup" element={<Signup />} />
+                    <Route path="/starter-landing/dashboard" element={<Dashboard />} />
+                    <Route path="/starter-landing/*" element={<Error />} />
                 </Route>
             </Routes>
         </div>
