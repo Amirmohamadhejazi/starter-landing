@@ -7,13 +7,11 @@ function App() {
     <>
         <div className="font-Semi-Regular">
             <Routes>
-                <Route>
-                    <Route index element={<Home/>} />
-                    <Route path="/starter-landing/" element={<Home />} />
-                    <Route path="/starter-landing/signup" element={<Signup />} />
-                    <Route path="/starter-landing/dashboard" element={<Dashboard />} />
-                    <Route path="/starter-landing/*" element={<Error />} />
-                </Route>
+              <Route index element={<Home/>} />
+              <Route path="/starter-landing/" element={<Home/>} />
+              <Route path="/starter-landing/signup" element={<Signup/>} />
+              <Route path="/starter-landing/dashboard" element={<Dashboard/>} />
+              <Route path="/starter-landing/*" element={<Error/>} />
             </Routes>
         </div>
 

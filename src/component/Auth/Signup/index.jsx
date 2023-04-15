@@ -8,7 +8,7 @@ import {
     Youtube,
     LinkedIn,
     Twitter
-} from "src/assets/index.jsx";
+} from "src/assets";
 import {useEffect, useState} from 'react';
 import { HiOutlinePlusSm } from 'react-icons/hi';
 import { MdClose } from 'react-icons/md';
@@ -115,7 +115,10 @@ const Signup = ()=>{
                 <div className="container ">
                     <div className="px-2 lg-px-0 pt-6 flex flex-col">
                         <div className="flex justify-center">
-                            <img src={logoDark}  className="cursor-pointer" alt=""/>
+                            <Link to={"/starter-landing"}>
+                                <img src={logoDark}  className="cursor-pointer" alt=""/>
+                            </Link>
+                           
                         </div>
                         <div className="mt-16 flex justify-center">
                             <div className="w-full lg:basis-1/3 relative">

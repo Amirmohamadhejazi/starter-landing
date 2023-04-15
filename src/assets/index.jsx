@@ -25,5 +25,8 @@ import Discord from "src/assets/static/Discord.svg"
 import Youtube from "src/assets/static/Youtube.svg"
 import LinkedIn from "src/assets/static/LinkedIn.svg"
 import Twitter from "src/assets/static/Twitter.svg"
+import VideoCover from "src/assets/static/Video-dashboard.png"
 
-export {Error404_img, logoDark, logoLight, bg_header, imgBerger_menu, Website_Mockup, Feature, heart, Avatar1, Avatar2, Avatar3, Dashboard_desktop , Dashboard_mobile, Dashboard_tablet, Pattern, Checkmark, CheckmarkGray, NotAvailable, NotAvailableGray, plus, minus, Dribble, Blogger, Discord, LinkedIn, Twitter , Youtube}
+export {Error404_img, logoDark, logoLight, bg_header, imgBerger_menu, Website_Mockup, Feature, heart, Avatar1, Avatar2, Avatar3, Dashboard_desktop , Dashboard_mobile, Dashboard_tablet, Pattern, Checkmark, CheckmarkGray, NotAvailable, NotAvailableGray, plus, minus, Dribble, Blogger, Discord, LinkedIn, Twitter , Youtube,
+    VideoCover
+}
