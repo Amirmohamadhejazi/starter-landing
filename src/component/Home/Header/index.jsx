@@ -2,6 +2,7 @@ import NavbarHome from "src/component/Home/Header/navbar/index.jsx";
 import {IoIosArrowForward} from "react-icons/io";
 import {ImTrophy} from "react-icons/im";
 import {Website_Mockup} from "src/assets/index.jsx";
+import {Link} from "react-router-dom";
 
 const Header = () => {
   return <>
@@ -12,10 +13,12 @@ const Header = () => {
                   <div>
                       <h1 className="text-4xl lg:text-5xl font-Semi-Bold tracking-wide">One page websites to all your social profiles.</h1>
                       <span className="block  tracking-tighter font-Regular mt-10 tracking-widest">with linkProfile, you can create a one page website that links to all your social media profiles in less than 5 minutes of setup.</span>
-                      <div className="btn_header flex inline-flex gap-4 items-center mt-10">
-                          <span>Get Started for free</span>
-                          <IoIosArrowForward className="pl-2 text-2xl"/>
-                      </div>
+                      <Link to={"./signup"}>
+                          <div className="btn_header flex inline-flex gap-4 items-center mt-10">
+                              <span>Get Started for free</span>
+                              <IoIosArrowForward className="pl-2 text-2xl"/>
+                          </div>
+                      </Link>
                       <div className="flex items-center mt-12">
                           <div className="text-2xl text-orange-500 bg-white rounded-full p-2">
                               <ImTrophy className=""/>

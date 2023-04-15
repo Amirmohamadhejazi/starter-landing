@@ -149,7 +149,7 @@ const Home = ()=>{
                                                     <div  className={`font-SemiBold text-5xl mb-2 ${items.mode === 1 ? "text-gray-400" :"text-white"}`} >{items.price>0 ? <span>${items.price}<span className="text-xl">/mo</span></span> :<span>free</span>}</div>
                                                 </div>
                                                 <div className={`font-Regular text-xl mb-2 ${items.mode === 1 ? "text-gray-400" :"text-white"}`}>{items.detailService}</div>
-                                                <div>
+                                                <div className="text-gray-400">
                                                     <div className="mb-4 mt-8 flex gap-4">
                                                         {
                                                             items.mode === 1 ? items.options[0]?<img src={Checkmark} alt=""/>: <img src={NotAvailable} alt=""/> : items.options[0]? <img src={CheckmarkGray} alt=""/>: <img src={NotAvailableGray} alt=""/>
@@ -194,18 +194,6 @@ const Home = ()=>{
                     <div className="container">
                         <div className=" px-2 lg:px-0 ">
                             <h1 className="text-3xl font-Bold ">Frequently Asked Questions</h1>
-
-                            {/*{*/}
-                            {/*    QuestionData.map((items)=> <div  className="collapse collapse-arrow  rounded-lg  border-2 border-gray-200 w-full  mt-8 cursor-pointer" onClick={()=>setCollapse(items.id)}>*/}
-                            {/*        <input type="checkbox" />*/}
-                            {/*        <div className="collapse-title text-xl font-medium">*/}
-                            {/*            <span className="font-bold text-lg">{items.text}</span>*/}
-                            {/*        </div>*/}
-                            {/*        <div className="collapse-content">*/}
-                            {/*            <span className="font-Regular text-gray-600 ">{items.detail}</span>*/}
-                            {/*        </div>*/}
-                            {/*    </div>)*/}
-                            {/*}*/}
                             {
                                 QuestionData.map((items)=> <div className="p-8 rounded-lg  border-2 border-gray-200 w-full  mt-8 cursor-pointer" onClick={(e)=>items.id === collapse ? setCollapse(undefined) : setCollapse(items.id)} key={items.id}>
                                     <div className="flex justify-between align-center">

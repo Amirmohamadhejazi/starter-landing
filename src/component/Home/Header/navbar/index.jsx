@@ -1,6 +1,7 @@
 import "./style.scss"
 import {logoLight , imgBerger_menu} from "src/assets/index.jsx"
 import { IoIosArrowForward } from 'react-icons/io';
+import {Link} from "react-router-dom";
 
 
 const NavbarHome = () => {
@@ -15,10 +16,12 @@ const NavbarHome = () => {
                     </div>
                 </div>
                 <div className="navbar-end ">
-                    <div className="btn_header flex items-center">
-                        <span>Get Started for free</span>
-                        <IoIosArrowForward className="pl-2 text-2xl"/>
-                    </div>
+                    <Link to={"./signup"} >
+                        <div className="btn_header flex items-center">
+                            <span>Get Started for free</span>
+                            <IoIosArrowForward className="pl-2 text-2xl"/>
+                        </div>
+                    </Link>
                 </div>
             </div>
             <div className="navbar  flex items-center text-white block lg:hidden ">
@@ -29,10 +32,11 @@ const NavbarHome = () => {
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost btn-circle">
                             <img src={imgBerger_menu} alt=""/>
-                            {/*<svg xmlns={imgBerger_menu} className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>*/}
                         </label>
                         <ul tabIndex={0} className="menu text-black menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                            <li className="focus:text-red active:bg-violet-700"><a>Get Started for free</a></li>
+                            <Link to={"./signup"} >
+                                <li className="focus:text-red active:bg-violet-700"><a>Get Started for free</a></li>
+                            </Link>
                             <li><a>Testimonials</a></li>
                             <li><a>Pricing</a></li>
                         </ul>

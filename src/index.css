@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+    /*font-family:Font_Regular*/
+}
 .flex-center{
     display: flex;
     justify-content: center;

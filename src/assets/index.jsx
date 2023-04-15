@@ -26,7 +26,11 @@ import Youtube from "src/assets/static/Youtube.svg"
 import LinkedIn from "src/assets/static/LinkedIn.svg"
 import Twitter from "src/assets/static/Twitter.svg"
 import VideoCover from "src/assets/static/Video-dashboard.png"
+import Analytics1 from "src/assets/static/Analytics Overview.png"
+import Analytics2 from "src/assets/static/Page Views Overview.png"
+import TopLinksClicked from "src/assets/static/Top Links Clicked.png"
+import Countries from "src/assets/static/Countries.png"
 
 export {Error404_img, logoDark, logoLight, bg_header, imgBerger_menu, Website_Mockup, Feature, heart, Avatar1, Avatar2, Avatar3, Dashboard_desktop , Dashboard_mobile, Dashboard_tablet, Pattern, Checkmark, CheckmarkGray, NotAvailable, NotAvailableGray, plus, minus, Dribble, Blogger, Discord, LinkedIn, Twitter , Youtube,
-    VideoCover
+    VideoCover, Analytics1, Analytics2, Countries, TopLinksClicked
 }
