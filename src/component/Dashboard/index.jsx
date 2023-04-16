@@ -61,11 +61,11 @@ const Dashboard = ()=>{
                         </div>
                     </div>
                     <div className="w-full lg:basis-4/5 rounded-md bg-white  bg-[#dcdcdc]  p-5" >
-                        {tab === 1 && <HomeDashboard/>}
-                        {tab === 2 && <Analytic/>}
-                        {tab === 3 && <Account/>}
-                        {tab === 4 && <>4</>}
-                        {tab === 5 && <>5</>}
+                        {tab == 1 && <HomeDashboard/>}
+                        {tab == 2 && <Analytic/>}
+                        {tab == 3 && <Account/>}
+                        {tab == 4 && <>4</>}
+                        {tab == 5 && <>5</>}
                     </div>
                     
                 </div>

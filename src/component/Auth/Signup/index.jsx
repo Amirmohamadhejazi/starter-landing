@@ -181,9 +181,9 @@ const Signup = ()=>{
                                     <div className="w-[100%] items-center lg:w-[60%]  flex-col lg:flex-row gap-5 flex">
                                         <div className="w-full lg:basis-1/2 p-8 rounded-lg  border-2 border-gray-200">
                                             <p className="mb-3 font-Bold">Available Social Media</p>
-                                            <div className="flex flex-col gap-3  min-h-[25rem] ">
+                                            <div className="flex flex-col gap-3  min-h-[19rem] ">
                                                 {
-                                                    AllSocial.map((items)=><div className={`w-full flex justify-between rounded-md p-4 text-white  cursor-pointer ${items.bg}`} key={items.id} onClick={()=>AddHandle(items)}>
+                                                    AllSocial.map((items)=><div className={`w-full flex justify-between rounded-md  px-4 py-2 text-white  cursor-pointer ${items.bg}`} key={items.id} onClick={()=>AddHandle(items)}>
                                                         <div className="flex gap-2">
                                                             <img src={items.img} alt=""/>
                                                             <span>{items.name}</span>
@@ -196,9 +196,9 @@ const Signup = ()=>{
                                         </div>
                                         <div className="w-full  lg:basis-1/2 p-8  rounded-lg  border-2 border-gray-200 ">
                                             <p className="mb-3 font-Bold">Currently added</p>
-                                            <div className="flex flex-col gap-3  min-h-[25rem] ">
+                                            <div className="flex flex-col gap-3  min-h-[19rem] ">
                                                 {
-                                                    AddedSocial.map((items)=><div className={`w-full min  flex justify-between rounded-md p-4 text-white  cursor-pointer ${items.bg}`} key={items.id} onClick={()=>RemoveHandle(items)}>
+                                                    AddedSocial.map((items)=><div className={`w-full min  flex justify-between rounded-md  px-4 py-2 text-white  cursor-pointer ${items.bg}`} key={items.id} onClick={()=>RemoveHandle(items)}>
                                                         <div className="flex gap-2">
                                                             <img src={items.img} alt=""/>
                                                             <span>{items.name}</span>
