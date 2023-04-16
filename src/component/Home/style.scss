@@ -18,7 +18,17 @@
     .dropdown .dropdown-content{
         right: 0;
     }
+ 
 
+    .clp_home { 
+        overflow: hidden;
+        height: 0;
+        transition: height 0.3s;
+      }
+      
+      .clp_home_active {
+        height: 70px;
+      }
     @media only screen and (max-width: 500px) {
         .dashboard_preview{
             background: url("src/assets/static/Dashboard-Mobile.png") no-repeat center bottom !important;

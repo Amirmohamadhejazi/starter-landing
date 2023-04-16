@@ -195,13 +195,13 @@ const Home = ()=>{
                         <div className=" px-2 lg:px-0 ">
                             <h1 className="text-3xl font-Bold ">Frequently Asked Questions</h1>
                             {
-                                QuestionData.map((items)=> <div className="p-8 rounded-lg  border-2 border-gray-200 w-full  mt-8 cursor-pointer" onClick={(e)=>items.id === collapse ? setCollapse(undefined) : setCollapse(items.id)} key={items.id}>
+                                QuestionData.map((items)=> <div className="p-8 rounded-lg  border-2 border-gray-200 w-full clp_parent mt-8 cursor-pointer h-[auto]" onClick={(e)=>items.id === collapse ? setCollapse(undefined) : setCollapse(items.id)} key={items.id}>
                                     <div className="flex justify-between align-center">
                                         <span className={`font-bold text-lg ${items.id === collapse && ' text-[#6016fc]'}`}>{items.text}</span>
                                         <img src={items.id === collapse ? minus : plus} alt=""/>
                                     </div>
-                                    <div className={`mt-4 ${items.id === collapse ? "block" : "hidden "}`} style={{width:"100%" }}>
-                                        <span className="font-Regular text-gray-600 ">{items.detail}</span>
+                                    <div className={`mt-4  clp_home ${items.id === collapse && "clp_home_active" }`} style={{width:"100%" }}>
+                                        <span className="font-Regular text-gray-600  ">{items.detail}</span>
                                     </div>
                                 </div>)
                             }
