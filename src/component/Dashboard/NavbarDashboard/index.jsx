@@ -7,16 +7,34 @@ import {Link } from "react-router-dom";
 import { MdKeyboardArrowDown } from 'react-icons/md';
 const NavbarDashboard = ()=>{
     return <>
-    <div className="flex justify-between shadow-lg p-5 rounded-lg">
-        <Link to={"/starter-landing/"}>
+    <div className="navbar bg-base-100">
+  <div className="flex-1">
+     <Link to={"/starter-landing/"}>
         <img src={logoDark}  className="cursor-pointer" alt=""/>
         </Link>
-        <div className="flex align-center gap-3">
-            <img src={Avatar1} alt="" />
+  </div>
+  <div className="flex-none gap-2">
+    <div className="dropdown dropdown-end">
+      <label tabIndex={0}>
+      <div className="flex items-center gap-2 ml-1 cursor-pointer">
+      <img src={Avatar1} alt="" />
             <span className="font-Bold ">Stephanie mark</span>
             <MdKeyboardArrowDown className="text-xl"/>
-        </div>
+      </div>
+      </label>
+      <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+        <li>
+          <a className="justify-between">
+            Profile
+            <span className="badge">New</span>
+          </a>
+        </li>
+        <li><a>Settings</a></li>
+        <li><a>Logout</a></li>
+      </ul>
     </div>
+  </div>
+</div>
     </>
 }
 
