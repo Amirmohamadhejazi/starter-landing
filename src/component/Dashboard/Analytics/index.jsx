@@ -3,7 +3,6 @@ import {Analytics1, Analytics2, Countries, TopLinksClicked} from "src/assets/ind
 
 const Analytic = ()=>{
     return <>
-
         <div className="flex flex-col items-center lg:items-start ">
             <div className="flex flex-col lg:flex-row gap-5">
                 <div className="lg:basis-1/2">

@@ -16,8 +16,6 @@ const Account = ()=>{
                                    type="text"
                                    id="name"
                                    name="name"
-                                // value={dataForm.name}
-                                // onChange={(e)=>setDataForm({...dataForm,name:e.target.value})}
                                    required
                                    placeholder="John doe"/>
 
@@ -28,8 +26,6 @@ const Account = ()=>{
                                    type="text"
                                    id="name"
                                    name="name"
-                                // value={dataForm.name}
-                                // onChange={(e)=>setDataForm({...dataForm,name:e.target.value})}
                                    required
                                    placeholder="https://linkProfile/steph"/>
 
@@ -48,50 +44,33 @@ const Account = ()=>{
                     <p className="text-lg font-Bold text-gray-500">This is your accounts language, not your linkProfile website.</p>
                 </div>
                 <div className="flex flex-col  basis-8/12   rounded-lg border-2 border-gray-200 p-12">
-                            <label className={`block text-gray-700 font-bold  mb-2`}  htmlFor="name">Languages</label>
-                            <input className="custom-Input  appearance-none "
-                                   type="text"
-                                   id="name"
-                                   name="name"
-                                // value={dataForm.name}
-                                // onChange={(e)=>setDataForm({...dataForm,name:e.target.value})}
-                                   required
-                                   placeholder="English"/>
+                    <label className={`block text-gray-700 font-bold  mb-2`}  htmlFor="name">Languages</label>
+                    <select className="select  border-2 w-full border-gray-200  ">
+                        <option selected>English</option>
+                        <option>persian</option>
+                        <option>russian</option>
+                        <option>indian</option>
+                        <option>turkey</option>
+                    </select>
                 </div>
             </div>
 
             <hr/>
 
-            <div className="flex  flex-col lg:flex-row gap-2">
+            <div className="flex  flex-col lg:flex-row gap-2 mb-5">
                 <div className="flex flex-col basis-4/12">
                     <p className="text-2xl font-SemiBold">Timezone</p>
                 </div>
                 <div className="flex flex-col  basis-8/12   rounded-lg border-2 border-gray-200 p-12">
                             <label className={`block text-gray-700 font-bold  mb-2`}  htmlFor="name">Timezone</label>
-                            <input className="custom-Input  appearance-none "
-                                   type="text"
-                                   id="name"
-                                   name="name"
-                                // value={dataForm.name}
-                                // onChange={(e)=>setDataForm({...dataForm,name:e.target.value})}
-                                   required
-                                   placeholder="(GMT+02:00) Cario"/>
+                            <select className="select  border-2 w-full border-gray-200  ">
+                                <option selected>(GMT+02:00) Cario</option>
+                                <option>ir</option>
+                                <option>usa</option>
+                            </select>
                 </div>
             </div>
         </div>
-
-
-        {/*<div>*/}
-        {/*    <label className={`block text-gray-700 font-bold  mb-2`}  htmlFor="name">Social Media Name</label>*/}
-        {/*    <input className="custom-Input  appearance-none "*/}
-        {/*           type="text"*/}
-        {/*           id="name"*/}
-        {/*           name="name"*/}
-        {/*           // value={dataForm.name}*/}
-        {/*           // onChange={(e)=>setDataForm({...dataForm,name:e.target.value})}*/}
-        {/*           required*/}
-        {/*           placeholder="i.e Behance"/>*/}
-        {/*</div>*/}
     </>
 }
 

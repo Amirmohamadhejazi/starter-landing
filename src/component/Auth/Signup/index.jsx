@@ -115,7 +115,7 @@ const Signup = ()=>{
                 <div className="container ">
                     <div className="px-2 lg-px-0 pt-6 flex flex-col">
                         <div className="flex justify-center">
-                            <Link to={"/starter-landing"}>
+                            <Link to={"/starter-landing/"}>
                                 <img src={logoDark}  className="cursor-pointer" alt=""/>
                             </Link>
                            
