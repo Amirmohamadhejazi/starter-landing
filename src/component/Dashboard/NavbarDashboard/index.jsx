@@ -1,6 +1,7 @@
 import {
     logoDark,
-    Avatar1
+    Avatar1,
+    Avatar2
 } from "src/assets";
 import {Link } from "react-router-dom";
 
@@ -18,6 +19,28 @@ const NavbarDashboard = ()=>{
       <label tabIndex={0}>
       <div className="flex items-center gap-2 ml-1 cursor-pointer">
       <img src={Avatar1} alt="" />
+            {/* <span className="font-Bold ">Stephanie mark</span>
+            <MdKeyboardArrowDown className="text-xl"/> */}
+      </div>
+      </label>
+      <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 left-[10%]">
+        <li>
+          <div className=" ">
+            <img src={Avatar1} alt="" />
+            <span className="font-Bold ">Amirmohamad</span>
+          </div>
+        </li>
+        <li>
+          <div className="">
+            <img src={Avatar2} alt="" />
+            <span className="font-Bold ">Stephanie mark</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div className="dropdown dropdown-end">
+      <label tabIndex={0}>
+      <div className="flex items-center gap-2 ml-1 cursor-pointer">
             <span className="font-Bold ">Stephanie mark</span>
             <MdKeyboardArrowDown className="text-xl"/>
       </div>

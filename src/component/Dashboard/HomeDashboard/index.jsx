@@ -1,6 +1,6 @@
 import { HiOutlinePlusSm } from 'react-icons/hi';
 import { MdClose } from 'react-icons/md';
-import {
+ import {
     VideoCover,
     Dribble,
     Blogger,
@@ -20,37 +20,37 @@ const HomeDashboard = () =>{
         {
             name:"Dribble",
             img:`${Dribble}`,
-            bg:"bg-[#ea4c89]",
+            bg:"#ea4c89",
             id:0
         },
         {
             name:"Blogger",
             img:`${Blogger}`,
-            bg:"bg-[#fc4f08]",
+            bg:"#fc4f08",
             id:1
         },
         {
             name:"Discord",
             img:`${Discord}`,
-            bg:"bg-[#7289da]",
+            bg:"#7289da",
             id:2
         },
         {
             name:"Youtube",
             img:`${Youtube}`,
-            bg:"bg-[#ff0000]",
+            bg:"#ff0000",
             id:3
         },
         {
             name:"LinkedIn",
             img:`${LinkedIn}`,
-            bg:"bg-[#0e76a8]",
+            bg:"#0e76a8",
             id:4
         },
         {
             name:"Twitter",
             img:`${Twitter}`,
-            bg:"bg-[#00acee]",
+            bg:"#00acee",
             id:5
         },
     ]
@@ -73,20 +73,23 @@ const HomeDashboard = () =>{
     }
 
     const CustomSocial = (e) => {
+
+        
       e.preventDefault()
       let NewCustomData = {
           name:dataForm.name,
           img:`${dataForm.icon_link}`,
-          bg:`bg-[${dataForm.color}]`,
+          bg:dataForm.color,
           id:SocialData.length+customDataForm.length +1,
           custom:true
       }
+
+      console.log(dataForm.color)
       setCustomDataForm([...customDataForm,NewCustomData])
       setAddedSocial([...AddedSocial,NewCustomData])
       setDataForm({name:"", color:"", link:"", icon_link:""})
     }
-
-
+ 
     return <>          
     <p className="text-xl font-Bold">
      Wellcome, Stephanie mark
@@ -113,7 +116,7 @@ const HomeDashboard = () =>{
             <p className="my-4 font-Bold text-center">Available Social Media</p>
             <div className="flex flex-col gap-3  min-h-[19rem] ">
                 {
-                    AllSocial.map((items)=><div className={`w-full min  flex justify-between rounded-md px-4 py-2 text-white items-center  cursor-pointer ${items.bg}`} key={items.id} onClick={()=>AddHandle(items)}>
+                    AllSocial.map((items)=><div className="w-full min  flex justify-between rounded-md px-4 py-2 text-white items-center  cursor-pointer" key={items.id} onClick={()=>AddHandle(items)}  style={{backgroundColor:`${items.bg}`}}>
                         <div className="flex gap-2 items-center">
                             <img src={items.img} className='max-h-[18px] max-h-[18px] rounded-sm' alt=""/>
                             <span>{items.name.length > 10 ? items.name.slice(0, 10)+"..." : items.name}</span>
@@ -144,17 +147,16 @@ const HomeDashboard = () =>{
                                         required
                                         placeholder="i.e Behance"/>
                                 </div>
-                                <div>
-                                    <label className={`block text-gray-700 font-bold mb-2`}  htmlFor="color">Color</label>
-                                    <input className="custom-Input  appearance-none "
-                                        type="text"
-                                        id="color"
-                                        name="color"
-                                        value={dataForm.color}
-                                        onChange={(e)=>setDataForm({...dataForm,color:e.target.value})}
-                                        required
-                                        placeholder="i.e #053eff"/>
+                                <label className={`block text-gray-700 font-bold mb-2`}  htmlFor="color">Color</label>
+                                <div className='w-full h-[50px]'>
+                                <input
+                                    type="color"
+                                    className="appearance-none rounded-lg w-full h-full"
+                                    value={dataForm.color}
+                                    onChange={(e)=>setDataForm({...dataForm,color:e.target.value})}
+                                    />
                                 </div>
+                                
                                 <div>
                                     <label className={`block text-gray-700 font-bold mb-2`}  htmlFor="link">Link</label>
                                     <input className="custom-Input  appearance-none "
@@ -193,7 +195,7 @@ const HomeDashboard = () =>{
             <p className="my-4 font-Bold text-center">Currently added</p>
             <div className="flex flex-col gap-3  min-h-[19rem]">
                 {
-                    AddedSocial.map((items)=><div className={`w-full min  flex justify-between rounded-md px-4 py-2 text-white items-center cursor-pointer ${items.bg}`} key={items.id} onClick={()=>RemoveHandle(items)}>
+                    AddedSocial.map((items)=><div className="w-full min  flex justify-between rounded-md px-4 py-2 text-white items-center cursor-pointer" key={items.id} onClick={()=>RemoveHandle(items)} style={{backgroundColor:`${items.bg}`}}>
                         <div className="flex gap-2 items-center">
                             <img src={items.img} className="max-h-[18px] max-h-[18px] rounded-sm" alt=""/>
                             <span>{items.name.length > 10 ? items.name.slice(0, 10)+"..." : items.name}</span>

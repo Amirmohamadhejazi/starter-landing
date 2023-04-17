@@ -15,7 +15,7 @@ const Dashboard = ()=>{
             <div className="container  px-2 lg-px-0 ">
             <NavbarDashboard/>
                 <div className="flex flex-col lg:flex-row gap-5 mt-6 ">
-                    <div className="basis-1/5 h-screen rounded-md   hidden lg:flex flex-col justify-between p-5 ">
+                    <div className="basis-1/5 min-h-screen rounded-md   hidden lg:flex flex-col justify-between p-5 ">
                         <div className="flex flex-col gap-3">
                             <div className={`flex gap-3 items-center cursor-pointer ${tab === 1 && 'text-[#6016fc]'}`}>
                                 <HiOutlineHome className="text-xl"/>
@@ -33,11 +33,13 @@ const Dashboard = ()=>{
                         <div className="flex flex-col gap-3">
                             <div className={`flex gap-3 items-center cursor-pointer ${tab === 4 && 'text-[#6016fc]'}`}>
                                 <TbSettings className="text-xl"/>
-                                <p className="text-lg font-Bold" onClick={()=>setTab(4)}>Publish</p>
+                                <p className="text-lg font-Bold" >Publish</p>
+                                {/* <p className="text-lg font-Bold" onClick={()=>setTab(4)}>Publish</p> */}
                             </div>
                             <div className={`flex gap-3 items-center cursor-pointer ${tab === 5 && 'text-[#6016fc]'}`}>
                                 <TbSettings className="text-xl"/>
-                                <p className="text-lg font-Bold" onClick={()=>setTab(5)}>Setting</p>
+                                <p className="text-lg font-Bold">Setting</p>
+                                {/* <p className="text-lg font-Bold" onClick={()=>setTab(5)}>Setting</p> */}
                             </div>
                         </div>
                     </div>
