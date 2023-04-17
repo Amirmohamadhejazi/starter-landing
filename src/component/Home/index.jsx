@@ -1,5 +1,6 @@
 import "./style.scss"
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from "react-router-dom";
 import { bg_header, Feature, Avatar1, Avatar2, Avatar3, Pattern ,Checkmark, CheckmarkGray, NotAvailable , NotAvailableGray, plus, minus} from "../../assets";
 import Header from "src/component/Home/Header";
 import Footer from "src/component/Home/Footer";
@@ -175,9 +176,13 @@ const Home = ()=>{
                                                         <span className=" font-Bold">User analytics.</span>
                                                     </div>
                                                 </div>
-                                                <button className={` font-bold py-4 px-4 w-full rounded ${items.mode === 1 ? 'bg-[#6016fc] text-white' :'bg-[#e5d9fc] text-[#6016fc]'}`}>
+                                                <Link to={"./"} >
+                                                    <button className={` font-bold py-4 px-4 w-full rounded ${items.mode === 1 ? 'bg-[#6016fc] text-white' :'bg-[#e5d9fc] text-[#6016fc]'}`}>
                                                     Subscribe
                                                 </button>
+                                                </Link>
+
+                                                
                                             </div>
 
                                         )

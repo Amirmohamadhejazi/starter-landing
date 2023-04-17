@@ -59,7 +59,7 @@ const Dashboard = ()=>{
                         </div>
                         <div className={`flex gap-1 items-center cursor-pointer ${tab === 4 && 'text-[#6016fc]'}`}>
                             <TbSettings className="text-lg"/>
-                            <p className="text-md font-Bold" onClick={()=>setTab(4)}>Publish</p>
+                            <p className="text-md font-Bold">Publish</p>
                         </div>
                     </div>
                     <div className="w-full lg:basis-4/5 rounded-md bg-white  bg-[#dcdcdc]  p-5" >

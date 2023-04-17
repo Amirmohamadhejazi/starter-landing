@@ -12,22 +12,24 @@ const Footer = ()=>{
                     </div>
                     <div className="lg:basis-2/3 justify-between flex-wrap lg:justify-end flex gap-12 lg:gap-24 mt-6 lg:mt-0">
                         <div className="flex flex-col">
-                            <span className="font-Bold text-xl">Sitemap</span>
-                            <span className="mt-4">Home</span>
-                            <span className="mt-2">pricing</span>
-                            <span className="mt-2">Testimonials</span>
+                            <Link to={"./"} ><span className="font-Bold text-xl">Sitemap</span></Link>
+                            <Link to={"./"} ><span className="mt-4">Home</span></Link>
+                            <Link to={"./"} ><span className="mt-2">pricing</span></Link>
+                            <Link to={"./"} ><span className="mt-2">Testimonials</span></Link>
                         </div>
                         <div className="flex flex-col">
-                            <span className="font-Bold text-xl">Resources</span>
-                            <span className=" mt-4">Support</span>
-                            <span className="mt-2">Contact</span>
-                            <span className="mt-2">FAQ</span>
+                            <Link to={"./"} ><span className="font-Bold text-xl">Resources</span></Link>
+                            <Link to={"./"} ><span className=" mt-4">Support</span></Link>
+                            <Link to={"./"} ><span className="mt-2">Contact</span></Link>
+                            <Link to={"./"} ><span className="mt-2">FAQ</span></Link>
+
                         </div>
                         <div className="flex flex-col">
-                            <span className="font-Bold text-xl">Company</span>
-                            <span className=" mt-4">About</span>
-                            <span className="mt-2">Customers</span>
-                            <span className="mt-2">Blog</span>
+                            <Link to={"./"} ><span className="font-Bold text-xl">Company</span></Link>
+                            <Link to={"./"} ><span className=" mt-4">About</span></Link>
+                            <Link to={"./"} ><span className="mt-2">Customers</span></Link>
+                            <Link to={"./"} ><span className="mt-2">Blog</span></Link>
+                           
                         </div>
                         <div className="flex flex-col">
                             <span className="font-Bold text-xl">Account</span>
