@@ -7,10 +7,9 @@ import Footer from "src/component/Home/Footer";
 import SwiperHelper from "src/component/helperComponents/Swiper";
 import {useState} from "react";
 const Home = ()=>{
-    const {value} = useSelector((state) => state.counter)
+
     const [collapse , setCollapse] = useState(0)
     const [activeIndex, setActiveIndex] = useState(null);
-    const dispatch = useDispatch()
     let data_comment = [
         {
             name:"Sara Smith",

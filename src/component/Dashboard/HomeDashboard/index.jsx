@@ -11,9 +11,12 @@ import { MdClose } from 'react-icons/md';
     Analytics1
 } from "src/assets";
 import "./style.scss"
-import { useState } from "react";
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from "react";
 const HomeDashboard = () =>{
-    const [AddedSocial , setAddedSocial] = useState([])
+    const {user} = useSelector((state) => state.dashboard)
+
+    const [AddedSocial , setAddedSocial] = useState(user.social ? user.social : [])
     const [dataForm, setDataForm] = useState({name:"", color:"", link:"", icon_link:""})
     const [customDataForm, setCustomDataForm] = useState([])
     let SocialData = [
@@ -54,8 +57,12 @@ const HomeDashboard = () =>{
             id:5
         },
     ]
-    const [AllSocial , setAllSocial] = useState(SocialData)
+    const [AllSocial , setAllSocial] = useState(user.Available ? user.Available : SocialData)
     
+    useEffect(()=>{
+        setAllSocial(user.Available ? user.Available : SocialData)
+        setAddedSocial(user.social ? user.social : [])
+    },[user])
     const AddHandle = (data)=>{
         let FilterArray = AllSocial.filter((item)=>item !== data)
         setAllSocial(FilterArray)
@@ -92,7 +99,7 @@ const HomeDashboard = () =>{
  
     return <>          
     <p className="text-xl font-Bold">
-     Wellcome, Stephanie mark
+     Wellcome, {user.name}
     </p>
 
     <div className="mt-5 flex flex-col lg:flex-row rounded-lg border-2 border-gray-200 gap-3">
