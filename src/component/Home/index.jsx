@@ -194,9 +194,9 @@ const Home = ()=>{
             </section>
 
             <section>
-                <div className="bg-white text-black py-16 lg:py-24">
+                <div className="bg-white text-black py-16 lg:py-24 px-5 lg:px-0 ">
                     <div className="container">
-                        <div className=" px-2 lg:px-0 ">
+                        <div className="">
                             <h1 className="text-3xl font-Bold ">Frequently Asked Questions</h1>
                             {/* {
                                 QuestionData.map((items)=> <div className="p-8 rounded-lg  border-2 border-gray-200 w-full clp_parent mt-8 cursor-pointer h-[auto]" onClick={(e)=>items.id === collapse ? setCollapse(undefined) : setCollapse(items.id)} key={items.id}>
