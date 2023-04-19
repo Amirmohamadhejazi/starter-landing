@@ -14,7 +14,9 @@ const NavbarHome = () => {
                 <div className="navbar-start">
                     <div className="flex  gap-5">
                         <img src={logoLight}  className="cursor-pointer" alt=""/>
-                        <span className="cursor-pointer">Dashboard</span>
+                        <Link to={"./dashboard"} >
+                            <span className="cursor-pointer">Dashboard</span>
+                        </Link>
                         <span className="cursor-pointer">Pricing</span>
                     </div>
                 </div>

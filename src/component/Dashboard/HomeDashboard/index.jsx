@@ -1,5 +1,8 @@
 import { HiOutlinePlusSm } from 'react-icons/hi';
 import { MdClose } from 'react-icons/md';
+import { setUser } from "src/Redux/Slices/dashboard/dashboardSlice";
+import {useLocation, useNavigate} from "react-router-dom";
+
  import {
     VideoCover,
     Dribble,
@@ -11,15 +14,22 @@ import { MdClose } from 'react-icons/md';
     Analytics1
 } from "src/assets";
 import "./style.scss"
-import { useSelector } from 'react-redux';
+import { useDispatch ,useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 const HomeDashboard = () =>{
-    const {user} = useSelector((state) => state.dashboard)
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+    const location = useLocation();
 
+    const {user} = useSelector((state) => state.dashboard)
     const [AddedSocial , setAddedSocial] = useState(user.social ? user.social : [])
     const [dataForm, setDataForm] = useState({name:"", color:"black", link:"", icon_link:""})
     const [customDataForm, setCustomDataForm] = useState([])
     const [modal, setModal] = useState(false)
+    const myParsedObject = JSON.parse(localStorage.getItem('starter-landing'));
+    useEffect(()=>{
+        myParsedObject && dispatch(setUser(myParsedObject))
+    },[])
     let SocialData = [
         {
             name:"Dribble",
@@ -58,12 +68,14 @@ const HomeDashboard = () =>{
             id:5
         },
     ]
-    const [AllSocial , setAllSocial] = useState(user.Available ? user.Available : SocialData)
-    
+    const [AllSocial , setAllSocial] = useState(user.available ? user.available : [])  
+
     useEffect(()=>{
-        setAllSocial(user.Available ? user.Available : SocialData)
+        setAllSocial(user.available ? user.available : SocialData)
         setAddedSocial(user.social ? user.social : [])
     },[user])
+
+
     const AddHandle = (data)=>{
         let FilterArray = AllSocial.filter((item)=>item !== data)
         setAllSocial(FilterArray)
@@ -81,11 +93,7 @@ const HomeDashboard = () =>{
     }
 
     const CustomSocial = (e) => {
-
-
-        
       e.preventDefault()
-      
       let NewCustomData = {
           name:dataForm.name,
           img:`${dataForm.icon_link}`,
@@ -93,16 +101,28 @@ const HomeDashboard = () =>{
           id:SocialData.length+customDataForm.length +1,
           custom:true
       }
-
-      console.log(dataForm.color)
       setCustomDataForm([...customDataForm,NewCustomData])
       setAddedSocial([...AddedSocial,NewCustomData])
       setDataForm({name:"", color:"", link:"", icon_link:""})
-
-
       setModal(false)
     }
- 
+
+    useEffect(()=>{
+        if (!myParsedObject){
+            navigate('/starter-landing/signup');
+        }
+    },[location.pathname, navigate, myParsedObject])
+
+    useEffect(()=>{
+        let NewUser = {
+            available:AllSocial,
+            link:user.link,
+            name:user.name,
+            social:AddedSocial
+        }
+        localStorage.setItem("starter-landing" , JSON.stringify(NewUser))
+    },[AllSocial , AddedSocial])
+    
     return <>          
     <p className="text-xl font-Bold">
      Wellcome, {user.name}

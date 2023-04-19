@@ -10,7 +10,8 @@ import {
     Analytics1
 } from "src/assets";
 const initialState = {
-    user: {name:"Stephanie mark" , social:[{
+    user: {name:"Stephanie mark" ,link:"", social:[], available:[
+    {
         name:"Dribble",
         img:`${Dribble}`,
         bg:"#ea4c89",
@@ -21,7 +22,8 @@ const initialState = {
         img:`${Blogger}`,
         bg:"#fc4f08",
         id:1
-    }], Available:[{
+    },
+    {
         name:"Discord",
         img:`${Discord}`,
         bg:"#7289da",
