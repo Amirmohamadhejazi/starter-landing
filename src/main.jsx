@@ -9,7 +9,7 @@ import "daisyui"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <>
-        <BrowserRouter>
+        <BrowserRouter basename="/starter-landing">
             <Provider store={store}>
                 <App/>
             </Provider>
