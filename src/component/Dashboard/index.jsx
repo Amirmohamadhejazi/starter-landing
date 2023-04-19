@@ -34,12 +34,10 @@ const Dashboard = ()=>{
                             <div className={`flex gap-3 items-center cursor-pointer ${tab === 4 && 'text-[#6016fc]'}`}>
                                 <TbSettings className="text-xl"/>
                                 <p className="text-lg font-Bold" >Publish</p>
-                                {/* <p className="text-lg font-Bold" onClick={()=>setTab(4)}>Publish</p> */}
                             </div>
                             <div className={`flex gap-3 items-center cursor-pointer ${tab === 5 && 'text-[#6016fc]'}`}>
                                 <TbSettings className="text-xl"/>
                                 <p className="text-lg font-Bold">Setting</p>
-                                {/* <p className="text-lg font-Bold" onClick={()=>setTab(5)}>Setting</p> */}
                             </div>
                         </div>
                     </div>

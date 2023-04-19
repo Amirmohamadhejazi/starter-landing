@@ -7,10 +7,9 @@ import Footer from "src/component/Home/Footer";
 import SwiperHelper from "src/component/helperComponents/Swiper";
 import {useState} from "react";
 const Home = ()=>{
-    const {value} = useSelector((state) => state.counter)
+
     const [collapse , setCollapse] = useState(0)
     const [activeIndex, setActiveIndex] = useState(null);
-    const dispatch = useDispatch()
     let data_comment = [
         {
             name:"Sara Smith",
@@ -195,20 +194,23 @@ const Home = ()=>{
             </section>
 
             <section>
-                <div className="bg-white text-black py-16 lg:py-24">
+                <div className="bg-white text-black py-16 lg:py-24 px-5 lg:px-0 ">
                     <div className="container">
-                        <div className=" px-2 lg:px-0 ">
+                        <div className="">
                             <h1 className="text-3xl font-Bold ">Frequently Asked Questions</h1>
                             {
-                                QuestionData.map((items)=> <div className="p-8 rounded-lg  border-2 border-gray-200 w-full clp_parent mt-8 cursor-pointer h-[auto]" onClick={(e)=>items.id === collapse ? setCollapse(undefined) : setCollapse(items.id)} key={items.id}>
-                                    <div className="flex justify-between align-center">
+                                QuestionData.map((items)=> <div className={`collapse p-8 rounded-lg ${items.id === collapse && " collapse-open" }  border-2 border-gray-200 w-full clp_parent mt-8 cursor-pointer h-[auto] `} 
+                                onClick={(e)=>items.id === collapse ? setCollapse(undefined) : setCollapse(items.id)} key={items.id}
+                                > 
+                                <div className="flex justify-between align-center">
                                         <span className={`font-bold text-lg ${items.id === collapse && ' text-[#6016fc]'}`}>{items.text}</span>
                                         <img src={items.id === collapse ? minus : plus} alt=""/>
                                     </div>
-                                    <div className={`mt-4  clp_home ${items.id === collapse && "clp_home_active" }`} style={{width:"100%" }}>
-                                        <span className="font-Regular text-gray-600  ">{items.detail}</span>
-                                    </div>
-                                </div>)
+                                <div className="collapse-content mt-2">
+                                    <span className="font-Regular text-gray-600  ">{items.detail}</span>
+                                </div>
+                                
+                              </div>)
                             }
                             <p className="text-lg text-gray-600 mt-6">if you still cant find answers to one of your questions, please email us at hello@linkprofile.com and well be more than happy to assist you.</p>
                         </div>

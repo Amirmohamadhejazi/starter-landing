@@ -1,5 +1,8 @@
 import { HiOutlinePlusSm } from 'react-icons/hi';
 import { MdClose } from 'react-icons/md';
+import { setUser } from "src/Redux/Slices/dashboard/dashboardSlice";
+import {useLocation, useNavigate} from "react-router-dom";
+
  import {
     VideoCover,
     Dribble,
@@ -11,11 +14,22 @@ import { MdClose } from 'react-icons/md';
     Analytics1
 } from "src/assets";
 import "./style.scss"
-import { useState } from "react";
+import { useDispatch ,useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 const HomeDashboard = () =>{
-    const [AddedSocial , setAddedSocial] = useState([])
-    const [dataForm, setDataForm] = useState({name:"", color:"", link:"", icon_link:""})
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const {user} = useSelector((state) => state.dashboard)
+    const [AddedSocial , setAddedSocial] = useState(user.social ? user.social : [])
+    const [dataForm, setDataForm] = useState({name:"", color:"black", link:"", icon_link:""})
     const [customDataForm, setCustomDataForm] = useState([])
+    const [modal, setModal] = useState(false)
+    const myParsedObject = JSON.parse(localStorage.getItem('starter-landing'));
+    useEffect(()=>{
+        myParsedObject && dispatch(setUser(myParsedObject))
+    },[])
     let SocialData = [
         {
             name:"Dribble",
@@ -54,8 +68,14 @@ const HomeDashboard = () =>{
             id:5
         },
     ]
-    const [AllSocial , setAllSocial] = useState(SocialData)
-    
+    const [AllSocial , setAllSocial] = useState(user.available ? user.available : [])  
+
+    useEffect(()=>{
+        setAllSocial(user.available ? user.available : SocialData)
+        setAddedSocial(user.social ? user.social : [])
+    },[user])
+
+
     const AddHandle = (data)=>{
         let FilterArray = AllSocial.filter((item)=>item !== data)
         setAllSocial(FilterArray)
@@ -73,8 +93,6 @@ const HomeDashboard = () =>{
     }
 
     const CustomSocial = (e) => {
-
-        
       e.preventDefault()
       let NewCustomData = {
           name:dataForm.name,
@@ -83,16 +101,31 @@ const HomeDashboard = () =>{
           id:SocialData.length+customDataForm.length +1,
           custom:true
       }
-
-      console.log(dataForm.color)
       setCustomDataForm([...customDataForm,NewCustomData])
       setAddedSocial([...AddedSocial,NewCustomData])
       setDataForm({name:"", color:"", link:"", icon_link:""})
+      setModal(false)
     }
- 
+
+    useEffect(()=>{
+        if (!myParsedObject){
+            navigate('/starter-landing/signup');
+        }
+    },[location.pathname, navigate, myParsedObject])
+
+    useEffect(()=>{
+        let NewUser = {
+            available:AllSocial,
+            link:user.link,
+            name:user.name,
+            social:AddedSocial
+        }
+        localStorage.setItem("starter-landing" , JSON.stringify(NewUser))
+    },[AllSocial , AddedSocial])
+    
     return <>          
     <p className="text-xl font-Bold">
-     Wellcome, Stephanie mark
+     Wellcome, {user.name}
     </p>
 
     <div className="mt-5 flex flex-col lg:flex-row rounded-lg border-2 border-gray-200 gap-3">
@@ -125,14 +158,14 @@ const HomeDashboard = () =>{
                     </div>)
                 }
                 <hr/>
-                <label htmlFor="my-modal-3" className=" p-3 text-center rounded-lg font-Bold border border-gray-600 cursor-pointer">
+                <label onClick={()=>setModal(true)} className=" p-3 text-center rounded-lg font-Bold border border-gray-600 cursor-pointer">
                     <span>Create custom Link</span>
                 </label>
 
                 <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-                <div className="modal">
+                <div className={`modal ${modal &&  "modal-open" }`}>
                     <div className="modal-box relative rounded-md">
-                        <label htmlFor="my-modal-3" className="  absolute right-2 top-5"><MdClose className="text-3xl text-gray-500 cursor-pointer"/></label>
+                        <label onClick={()=>setModal(false)} className="  absolute right-2 top-5"><MdClose className="text-3xl text-gray-500 cursor-pointer"/></label>
                         <h3 className="text-lg font-bold">Create a custom Social media Link </h3>
 
                             <form className="w-[100%] flex flex-col gap-3 mt-5" onSubmit={CustomSocial}>
@@ -180,10 +213,8 @@ const HomeDashboard = () =>{
                                         placeholder="https://cdn.com/behance.svg"/>
                                 </div>
 
-                                <button type="submit" >
-                                    <label htmlFor="my-modal-3" className="btn font-bold py-4 px-4 w-full rounded bg-[#6016fc] text-white mt-5">
+                                <button type="submit"  className="btn font-bold py-4 px-4 w-full rounded bg-[#6016fc] text-white mt-5">
                                         Add Custom Link
-                                    </label>
                                 </button>
                             </form>
                     </div>

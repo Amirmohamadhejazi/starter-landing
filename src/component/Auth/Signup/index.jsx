@@ -20,43 +20,44 @@ const Signup = ()=>{
         name: '',
         link: '',
         social:[],
+        available:[],
     });
     const [AddedSocial , setAddedSocial] = useState([])
     let SocialData = [
         {
             name:"Dribble",
             img:`${Dribble}`,
-            bg:"bg-[#ea4c89]",
+            bg:"#ea4c89",
             id:0
         },
         {
             name:"Blogger",
             img:`${Blogger}`,
-            bg:"bg-[#fc4f08]",
+            bg:"#fc4f08",
             id:1
         },
         {
             name:"Discord",
             img:`${Discord}`,
-            bg:"bg-[#7289da]",
+            bg:"#7289da",
             id:2
         },
         {
             name:"Youtube",
             img:`${Youtube}`,
-            bg:"bg-[#ff0000]",
+            bg:"#ff0000",
             id:3
         },
         {
             name:"LinkedIn",
             img:`${LinkedIn}`,
-            bg:"bg-[#0e76a8]",
+            bg:"#0e76a8",
             id:4
         },
         {
             name:"Twitter",
             img:`${Twitter}`,
-            bg:"bg-[#00acee]",
+            bg:"#00acee",
             id:5
         },
     ]
@@ -70,12 +71,15 @@ const Signup = ()=>{
     };
 
     const handleSubmit = (event) => {
-        setFormData({...formData, social: AddedSocial})
+        setFormData({...formData, social: AddedSocial , available:AllSocial})
     };
 
     const goToNextStep = (event) => {
 
         step === 2 && localStorage.setItem("starter-landing" , JSON.stringify(formData))
+        let NewData = {
+
+        }
         event.preventDefault();
         setStep((prevStep) => prevStep + 1);
 
@@ -106,7 +110,6 @@ const Signup = ()=>{
         console.log("formData")
         console.log(formData)
         console.log("formData")
-
     },[formData])
     return <>
         <div className="Sing_up">
@@ -183,7 +186,7 @@ const Signup = ()=>{
                                             <p className="mb-3 font-Bold">Available Social Media</p>
                                             <div className="flex flex-col gap-3  min-h-[19rem] ">
                                                 {
-                                                    AllSocial.map((items)=><div className={`w-full flex justify-between rounded-md  px-4 py-2 text-white  cursor-pointer ${items.bg}`} key={items.id} onClick={()=>AddHandle(items)}>
+                                                    AllSocial.map((items)=><div className={`w-full flex justify-between rounded-md  px-4 py-2 text-white  cursor-pointer`} style={{backgroundColor: items.bg}} key={items.id} onClick={()=>AddHandle(items)}>
                                                         <div className="flex gap-2">
                                                             <img src={items.img} alt=""/>
                                                             <span>{items.name}</span>
@@ -198,7 +201,7 @@ const Signup = ()=>{
                                             <p className="mb-3 font-Bold">Currently added</p>
                                             <div className="flex flex-col gap-3  min-h-[19rem] ">
                                                 {
-                                                    AddedSocial.map((items)=><div className={`w-full min  flex justify-between rounded-md  px-4 py-2 text-white  cursor-pointer ${items.bg}`} key={items.id} onClick={()=>RemoveHandle(items)}>
+                                                    AddedSocial.map((items)=><div className={`w-full min  flex justify-between rounded-md  px-4 py-2 text-white  cursor-pointer `} style={{backgroundColor: items.bg}}  key={items.id} onClick={()=>RemoveHandle(items)}>
                                                         <div className="flex gap-2">
                                                             <img src={items.img} alt=""/>
                                                             <span>{items.name}</span>
