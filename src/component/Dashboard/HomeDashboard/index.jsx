@@ -122,9 +122,13 @@ const HomeDashboard = () =>{
             name:user.name,
             social:AddedSocial
         }
+        myParsedObject && (
+
         localStorage.setItem("starter-landing" , JSON.stringify(NewUser))
+        )
+
     },[AllSocial , AddedSocial])
-    
+
     return <>          
     <p className="text-xl font-Bold">
      Wellcome, {user.name}

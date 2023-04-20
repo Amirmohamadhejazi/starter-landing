@@ -99,10 +99,13 @@ const Signup = ()=>{
         
         
         
+// =======
+//     const goToNextStep = (event) => {
+
+//         step === 2 && localStorage.setItem("starter-landing" , JSON.stringify(formData))
+//         event.preventDefault();
+// >>>>>>> 0bf69b5e5048cd49583b5d943d05aa2c1b36113e
         setStep((prevStep) => prevStep + 1);
-
-
-        console.log(step)
     };
 
 
@@ -139,7 +142,6 @@ const Signup = ()=>{
                             <Link to={"/starter-landing/"}>
                                 <img src={logoDark}  className="cursor-pointer" alt=""/>
                             </Link>
-                           
                         </div>
                         <div className="mt-16 flex justify-center">
                             <div className="w-full lg:basis-1/3 relative">
