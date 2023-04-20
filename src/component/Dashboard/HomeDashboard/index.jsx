@@ -1,3 +1,4 @@
+import React, { useRef } from "react";
 import { HiOutlinePlusSm } from 'react-icons/hi';
 import { MdClose } from 'react-icons/md';
 import { setUser } from "src/Redux/Slices/dashboard/dashboardSlice";
@@ -20,10 +21,8 @@ const HomeDashboard = () =>{
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const location = useLocation();
-
     const {user} = useSelector((state) => state.dashboard)
     const [AddedSocial , setAddedSocial] = useState(user.social ? user.social : [])
-    const [dataForm, setDataForm] = useState({name:"", color:"black", link:"", icon_link:""})
     const [customDataForm, setCustomDataForm] = useState([])
     const [modal, setModal] = useState(false)
     const myParsedObject = JSON.parse(localStorage.getItem('starter-landing'));
@@ -91,20 +90,23 @@ const HomeDashboard = () =>{
                 setAllSocial([...AllSocial, data])
         }
     }
-
+    const formRef = useRef(null);
     const CustomSocial = (e) => {
-      e.preventDefault()
-      let NewCustomData = {
-          name:dataForm.name,
-          img:`${dataForm.icon_link}`,
-          bg:dataForm.color,
-          id:SocialData.length+customDataForm.length +1,
-          custom:true
-      }
-      setCustomDataForm([...customDataForm,NewCustomData])
-      setAddedSocial([...AddedSocial,NewCustomData])
-      setDataForm({name:"", color:"", link:"", icon_link:""})
-      setModal(false)
+        e.preventDefault()
+        const formData = new FormData(formRef.current);
+        const data = {
+            img: formData.get("icon_link"),
+            bg: formData.get("color"),
+            name: formData.get("name"),
+            id:SocialData.length+customDataForm.length +1,
+            custom:true
+        };
+        setCustomDataForm([...customDataForm,data])
+        setAddedSocial([...AddedSocial,data])
+        setModal(false)
+        setTimeout(()=>{
+            formRef.current.reset();
+        },500)
     }
 
     useEffect(()=>{
@@ -136,7 +138,6 @@ const HomeDashboard = () =>{
             <p className="text-xl font-Bold">How Freelancing Has Changed My Life with Anderson Matthew</p>
             <p className="text-gray-500 font-Bold">Tune in to this episode of interviewing freelancers from around the world and how linkProfile has helped. In this episode, Anderson goes over his strategies to get your first online client and how to do outreach.</p>
             <p className="text-gray-500 font-Bold">Anderson also goes over how linkProfile managed to secure a $60k client.</p>
-
             <button className="w-[200px] lg:w-[40%] p-3 text-center rounded-lg font-Bold border border-gray-600 cursor-pointer">
                 <span>Watch Video Now</span>
             </button>
@@ -167,26 +168,24 @@ const HomeDashboard = () =>{
                     <div className="modal-box relative rounded-md">
                         <label onClick={()=>setModal(false)} className="  absolute right-2 top-5"><MdClose className="text-3xl text-gray-500 cursor-pointer"/></label>
                         <h3 className="text-lg font-bold">Create a custom Social media Link </h3>
-
-                            <form className="w-[100%] flex flex-col gap-3 mt-5" onSubmit={CustomSocial}>
+                            <form  ref={formRef} className="w-[100%] flex flex-col gap-3 mt-5" onSubmit={CustomSocial}>
                                 <div>
                                     <label className={`block text-gray-700 font-bold  mb-2`}  htmlFor="name">Social Media Name</label>
                                     <input className="custom-Input  appearance-none "
                                         type="text"
                                         id="name"
                                         name="name"
-                                            value={dataForm.name}
-                                            onChange={(e)=>setDataForm({...dataForm,name:e.target.value})}
                                         required
                                         placeholder="i.e Behance"/>
                                 </div>
                                 <label className={`block text-gray-700 font-bold mb-2`}  htmlFor="color">Color</label>
                                 <div className='w-full h-[50px]'>
                                 <input
+                                    id="color"
+                                    name="color"
                                     type="color"
+                                    // value=""
                                     className="appearance-none rounded-lg w-full h-full"
-                                    value={dataForm.color}
-                                    onChange={(e)=>setDataForm({...dataForm,color:e.target.value})}
                                     />
                                 </div>
                                 
@@ -196,8 +195,6 @@ const HomeDashboard = () =>{
                                         type="text"
                                         id="link"
                                         name="link"
-                                        value={dataForm.link}
-                                        onChange={(e)=>setDataForm({...dataForm,link:e.target.value})}
                                         required
                                         placeholder="i.e https://behance.com"/>
                                 </div>
@@ -207,12 +204,10 @@ const HomeDashboard = () =>{
                                         type="text"
                                         id="icon_link"
                                         name="icon_link"
-                                        value={dataForm.icon_link}
-                                        onChange={(e)=>setDataForm({...dataForm,icon_link:e.target.value})}
                                         required
                                         placeholder="https://cdn.com/behance.svg"/>
                                 </div>
-
+                                
                                 <button type="submit"  className="btn font-bold py-4 px-4 w-full rounded bg-[#6016fc] text-white mt-5">
                                         Add Custom Link
                                 </button>

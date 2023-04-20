@@ -1,4 +1,5 @@
 import "./style.scss"
+import React, { useRef } from "react";
 import {Link } from "react-router-dom";
 import {
     logoDark,
@@ -22,6 +23,7 @@ const Signup = ()=>{
         social:[],
         available:[],
     });
+
     const [AddedSocial , setAddedSocial] = useState([])
     let SocialData = [
         {
@@ -62,25 +64,41 @@ const Signup = ()=>{
         },
     ]
     const [AllSocial , setAllSocial] = useState(SocialData)
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [name]: value,
-        }));
-    };
+    // const handleInputChange = (event) => {
+    //     const { name, value } = event.target;
+    //     setFormData((prevFormData) => ({
+    //         ...prevFormData,
+    //         [name]: value,
+    //     }));
+    // };
 
     const handleSubmit = (event) => {
         setFormData({...formData, social: AddedSocial , available:AllSocial})
     };
+    const formRef = useRef(null);
 
-    const goToNextStep = (event) => {
+    const goToNextStep = (e) => {
+        e.preventDefault()
+        
+        if (step === 1) {
+            const formData = new FormData(formRef.current);
+            const dataForm = {
+                name: formData.get("name"),
+                link: formData.get("link")
+            };
+        
+            console.log(dataForm);
 
-        step === 2 && localStorage.setItem("starter-landing" , JSON.stringify(formData))
-        let NewData = {
-
+            setFormData({...formData,name:dataForm.name ,link:dataForm.link })
         }
-        event.preventDefault();
+        if (step === 2) {
+            setFormData({...formData, social: AddedSocial , available:AllSocial})
+
+            localStorage.setItem("starter-landing" , JSON.stringify(formData))
+        }
+        
+        
+        
         setStep((prevStep) => prevStep + 1);
 
 
@@ -134,7 +152,7 @@ const Signup = ()=>{
                             </div>
                         </div>
                         {step === 1 && (
-                            <form onSubmit={goToNextStep}>
+                            <form  ref={formRef}  onSubmit={goToNextStep}>
                                 <div className="flex items-center justify-center flex-col gap-8 mt-24">
                                     <div className="text-center">
                                         <h1 className="font-Bold text-3xl">Lets get you setup in less than 5 minutes!</h1>
@@ -146,8 +164,6 @@ const Signup = ()=>{
                                            type="text"
                                            id="name"
                                            name="name"
-                                           value={formData.name}
-                                           onChange={handleInputChange}
                                            required
                                            placeholder="John Doe" />
                                 </div>
@@ -157,8 +173,6 @@ const Signup = ()=>{
                                            type="text"
                                            id="link"
                                            name="link"
-                                           value={formData.link}
-                                           onChange={handleInputChange}
                                            required
                                            placeholder="https://linkProfile/steph"/>
                                 </div>
