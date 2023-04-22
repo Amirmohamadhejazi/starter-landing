@@ -1,6 +1,6 @@
 import "./style.scss"
 import React, { useRef } from "react";
-import {Link } from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {
     logoDark,
     Dribble,
@@ -16,10 +16,12 @@ import { MdClose } from 'react-icons/md';
 
 const Signup = ()=>{
     const [step, setStep] = useState(1);
-
+    const navigate = useNavigate();
+    const location = useLocation();
+    const localLogin = JSON.parse(localStorage.getItem('starter-landing'));
     const [formData, setFormData] = useState({
-        name: '',
-        link: '',
+        name: "",
+        link: "",
         social:[],
         available:[],
     });
@@ -64,14 +66,6 @@ const Signup = ()=>{
         },
     ]
     const [AllSocial , setAllSocial] = useState(SocialData)
-    // const handleInputChange = (event) => {
-    //     const { name, value } = event.target;
-    //     setFormData((prevFormData) => ({
-    //         ...prevFormData,
-    //         [name]: value,
-    //     }));
-    // };
-
     const handleSubmit = (event) => {
         setFormData({...formData, social: AddedSocial , available:AllSocial})
     };
@@ -79,21 +73,13 @@ const Signup = ()=>{
 
     const goToNextStep = (e) => {
         e.preventDefault()
-        
         if (step === 1) {
-            const formData = new FormData(formRef.current);
-            const dataForm = {
-                name: formData.get("name"),
-                link: formData.get("link")
-            };
-        
-            console.log(dataForm);
-
+            const formDataStep1 = new FormData(formRef.current);
+            const dataForm = Object.fromEntries(formDataStep1.entries());
             setFormData({...formData,name:dataForm.name ,link:dataForm.link })
         }
         if (step === 2) {
             setFormData({...formData, social: AddedSocial , available:AllSocial})
-
             localStorage.setItem("starter-landing" , JSON.stringify(formData))
         }
         
@@ -132,6 +118,17 @@ const Signup = ()=>{
         console.log(formData)
         console.log("formData")
     },[formData])
+
+
+
+
+
+    useEffect(()=>{
+        if (localLogin){
+            navigate('/starter-landing/')
+        }
+    },[])
+
     return <>
         <div className="Sing_up">
             <div className="min-h-screen">

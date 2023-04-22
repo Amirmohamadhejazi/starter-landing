@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import { HiOutlinePlusSm } from 'react-icons/hi';
 import { MdClose } from 'react-icons/md';
 import { setUser } from "src/Redux/Slices/dashboard/dashboardSlice";
-import {useLocation, useNavigate} from "react-router-dom";
 
  import {
     VideoCover,
@@ -19,9 +18,7 @@ import { useDispatch ,useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 const HomeDashboard = () =>{
     const dispatch = useDispatch()
-    const navigate = useNavigate();
-    const location = useLocation();
-    const {user} = useSelector((state) => state.dashboard)
+    const {user, AllSocialData} = useSelector((state) => state.dashboard)
     const [AddedSocial , setAddedSocial] = useState(user.social ? user.social : [])
     const [customDataForm, setCustomDataForm] = useState([])
     const [modal, setModal] = useState(false)
@@ -29,48 +26,10 @@ const HomeDashboard = () =>{
     useEffect(()=>{
         myParsedObject && dispatch(setUser(myParsedObject))
     },[])
-    let SocialData = [
-        {
-            name:"Dribble",
-            img:`${Dribble}`,
-            bg:"#ea4c89",
-            id:0
-        },
-        {
-            name:"Blogger",
-            img:`${Blogger}`,
-            bg:"#fc4f08",
-            id:1
-        },
-        {
-            name:"Discord",
-            img:`${Discord}`,
-            bg:"#7289da",
-            id:2
-        },
-        {
-            name:"Youtube",
-            img:`${Youtube}`,
-            bg:"#ff0000",
-            id:3
-        },
-        {
-            name:"LinkedIn",
-            img:`${LinkedIn}`,
-            bg:"#0e76a8",
-            id:4
-        },
-        {
-            name:"Twitter",
-            img:`${Twitter}`,
-            bg:"#00acee",
-            id:5
-        },
-    ]
     const [AllSocial , setAllSocial] = useState(user.available ? user.available : [])  
 
     useEffect(()=>{
-        setAllSocial(user.available ? user.available : SocialData)
+        setAllSocial(user.available ? user.available : AllSocialData)
         setAddedSocial(user.social ? user.social : [])
     },[user])
 
@@ -93,12 +52,13 @@ const HomeDashboard = () =>{
     const formRef = useRef(null);
     const CustomSocial = (e) => {
         e.preventDefault()
-        const formData = new FormData(formRef.current);
+        const formData = new FormData(formRef.current)
+        const dataFormCustom = Object.fromEntries(formData.entries())
         const data = {
-            img: formData.get("icon_link"),
-            bg: formData.get("color"),
-            name: formData.get("name"),
-            id:SocialData.length+customDataForm.length +1,
+            img: dataFormCustom.icon_link,
+            bg: dataFormCustom.color,
+            name: dataFormCustom.name,
+            id:AllSocialData.length+customDataForm.length +1,
             custom:true
         };
         setCustomDataForm([...customDataForm,data])
@@ -108,12 +68,6 @@ const HomeDashboard = () =>{
             formRef.current.reset();
         },500)
     }
-
-    useEffect(()=>{
-        if (!myParsedObject){
-            navigate('/starter-landing/signup');
-        }
-    },[location.pathname, navigate, myParsedObject])
 
     useEffect(()=>{
         let NewUser = {
@@ -131,7 +85,7 @@ const HomeDashboard = () =>{
 
     return <>          
     <p className="text-xl font-Bold">
-     Wellcome, {user.name}
+     Welcome, {user.name}!
     </p>
 
     <div className="mt-5 flex flex-col lg:flex-row rounded-lg border-2 border-gray-200 gap-3">
@@ -148,13 +102,12 @@ const HomeDashboard = () =>{
         </div>
     </div>
 
-    <div className="flex flex-col lg:flex-row gap-3 mt-5 flex-wrap lg:flex-nowrap items-center lg:items-start">
-
+    <div className="flex flex-col lg:flex-row gap-3 mt-5 flex-wrap lg:flex-nowrap items-stretch	 ">
         <div className="w-full lg:w-[30%] p-3  rounded-lg  border-2 border-gray-200">
             <p className="my-4 font-Bold text-center">Available Social Media</p>
             <div className="flex flex-col gap-3  min-h-[19rem] ">
                 {
-                    AllSocial.map((items)=><div className="w-full min  flex justify-between rounded-md px-4 py-2 text-white items-center  cursor-pointer" key={items.id} onClick={()=>AddHandle(items)}  style={{backgroundColor:`${items.bg}`}}>
+                    AllSocial.map((items)=><div className="w-full min  flex justify-between rounded-md px-4 py-2 text-white items-center  cursor-pointer" key={items.id} onClick={()=>AddHandle(items)}  style={{backgroundColor:`${items.bg}`}} title={items.name}>
                         <div className="flex gap-2 items-center">
                             <img src={items.img} className='max-h-[18px] max-h-[18px] rounded-sm' alt=""/>
                             <span>{items.name.length > 10 ? items.name.slice(0, 10)+"..." : items.name}</span>
@@ -188,7 +141,6 @@ const HomeDashboard = () =>{
                                     id="color"
                                     name="color"
                                     type="color"
-                                    // value=""
                                     className="appearance-none rounded-lg w-full h-full"
                                     />
                                 </div>
@@ -225,7 +177,7 @@ const HomeDashboard = () =>{
             <p className="my-4 font-Bold text-center">Currently added</p>
             <div className="flex flex-col gap-3  min-h-[19rem]">
                 {
-                    AddedSocial.map((items)=><div className="w-full min  flex justify-between rounded-md px-4 py-2 text-white items-center cursor-pointer" key={items.id} onClick={()=>RemoveHandle(items)} style={{backgroundColor:`${items.bg}`}}>
+                    AddedSocial.map((items)=><div className="w-full min  flex justify-between rounded-md px-4 py-2 text-white items-center cursor-pointer" key={items.id} onClick={()=>RemoveHandle(items)} style={{backgroundColor:`${items.bg}`}} title={items.name}>
                         <div className="flex gap-2 items-center">
                             <img src={items.img} className="max-h-[18px] max-h-[18px] rounded-sm" alt=""/>
                             <span>{items.name.length > 10 ? items.name.slice(0, 10)+"..." : items.name}</span>
